@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel='stylesheet' href='/css/bootstrap.min.css'>
+    <link rel='stylesheet' href='/css/main.css'>
+</head>
+<body>
+<div class="pm_register">
+    <header id="pm_register_header">
+        <img src="/images/loginlogo.png" alt="">
+    </header>
+    <div id="pm_register_div1">
+        <div class="top">
+            <span class="span1">注册</span>
+            <span class="span2">已有帐号，<a href="/login">去登录</a></span>
+        </div>
+        <form class="pm_register_form-horizontal">
+            <div class="form-group">
+
+                <div class="col-sm-10">
+                    <input type="email" class="form-control pm_register_form-control1" id="email"
+                           placeholder="请输入邮箱">
+                </div>
+            </div>
+            <div class="form-group">
+
+                <div class="col-sm-10">
+                    <input type="text" class="form-control pm_register_form-control1" id="nickname"
+                           placeholder="请输入昵称">
+                </div>
+            </div>
+            <div class="form-group">
+
+                <div class="col-sm-10">
+                    <input type="password" class="form-control pm_register_form-control2" id="password"
+                           placeholder="请输入密码">
+                </div>
+            </div>
+            <div class="form-group">
+
+                <div class="col-sm-10">
+                    <input type="password" class="form-control pm_register_form-control2" id="repassword"
+                           placeholder="请确认密码">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class=" col-sm-10">
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" id="chk11"> 同意<a href="#" id="pm_register_a">《融智教育登录服务协议》</a>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-10">
+                    <button type="button" class="btn btn-default btn-danger" id="pm_register_but" >注册</button>
+                </div>
+            </div>
+        </form>
+        <div id="pm_register_right">
+            <img src="./images/lietu.jpg" alt="">
+        </div>
+    </div>
+    <div id="pm_register_span3">
+        <span>©Copyright Geeboo.com.All Rights Reserved 京公网安备号：110108007068ICP备11013919号-1 京ICP证110513号</span>
+    </div>
+</div>
+</body>
+</html>
+<script src="/javascripts/jquery.min.js"></script>
+<script src="/javascripts/bootstrap.min.js"></script>
+<script src="/javascripts/public.js"></script>
+<script src="/javascripts/layer/layer.js"></script>
+<script>
+
+    $("#pm_register_but").click(function () {
+        if($("#email").val()==='' ){
+            layer.msg('email为空！');
+            return
+        }else if($("#password").val()===''){
+            layer.msg('密码为空！');
+            return
+        }else if($("#nickname").val()===''){
+            layer.msg('昵称不能为空！');
+            return
+        }else if($("#password").val()===$("#repassword").val()){
+            $.ajax({
+                type: 'post',
+                url: '/register',
+                data: {
+                    "youxiang":$("#email").val(),
+                    "nicheng":$("#nickname").val(),
+                    "mima":$("#password").val(),
+                },
+                dataType: 'json',
+                success: function(result) {
+                    if(result.code==1){
+                        layer.msg("注册成功");
+                        window.location.href="/";
+                    }else if(result.code == -1){
+                        layer.msg("邮箱已被注册")
+                    }else{
+                        layer.msg("err")
+                    }
+                }
+            });return;}
+        else{
+            layer.msg("密码不一致");
+            return
+        }
+    })
+</script>

@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>在线书城</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <!--bootstrap官方样式-->
+    <link rel="stylesheet" href="/css/normalize.css">
+    <!--强跨浏览器表现的一致性css 重置样式-->
+    <link rel="stylesheet" href="/css/bookstore.css">
+
+    <link rel="stylesheet" href="/css/main.css">
+
+    <!--自用样式-->
+</head>
+<body>
+<!--头部-->
+<%- include('nav') %>
+<!--路径导航-->
+
+<div class="container my_neirong">
+    <ol class="breadcrumb" style="background: rgba(212,212,212,0.5)">
+        <li><a href="/">首页</a></li>
+        <li class="active">排行榜</li>
+    </ol>
+</div>
+<!--排行榜-->
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-2">
+            <h4>排行榜</h4>
+            <hr>
+            <nav>
+                <ul class="nav nav-pills nav-stacked" id="mytab">
+                    <li class="active"><a href="#book" data-toggle="tab">畅销图书榜</a></li>
+                    <li><a href="#newBooks" data-toggle="tab">畅销新书榜</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="col-md-10 tab-content">
+            <div class="tab-pane fade in active" id="book">
+                <div class="col-md-12">
+                    <!--内容-->
+                    <div id="div">
+                        <strong>畅销书推荐</strong>
+                    </div>
+                    <!--一本书-->
+                    <div class="box1 row changxiaoshu">
+
+                    </div>
+                    <!--分页-->
+                    <div class="text-center">
+                        <nav aria-label="Page navigation">
+
+                            <ul class="pagination paihangpage">
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="newBooks">
+                <div class="col-md-12">
+                    <!--内容-->
+                    <div id="div">
+                        <strong>畅销书推荐</strong>
+                    </div>
+
+                    <div class="box1 row xinshu">
+                    </div>
+
+
+                    <!--分页-->
+                    <div class="text-center">
+                        <nav aria-label="Page navigation ">
+
+                            <ul class="pagination paihangpage">
+
+                            </ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--底部-->
+<%- include('footer') %>
+
+
+<script src="/javascripts/jquery-3.2.1.min.js"></script>
+<script src="/javascripts/bootstrap.min.js"></script>
+<script src="/javascripts/public.js"></script>
+<scripy src="/javascripts/layer/layer.js"></scripy>
+<script>
+    $(function () {
+        getpaihang()
+    })
+    var page = 1;
+    function getpaihang() {
+        $.get('/rank/rank', {page: page}, function (data) {
+            if (data.status == 1) {
+                console.log(data);
+                var changxiaobang1 = data.changxiaobang;
+                var html = '';
+                for (var i = 0; i < changxiaobang1.length; i++) {
+                    html += '<div cla`ss="box1">'
+                    html += '<div class="col-md-2">'
+                    html += '<img src="/images/54654654.jpg">'
+                    html += ' </div>'
+                    html += '  <div class="col-md-10">'
+                    html += '<strong>' + changxiaobang1[i].name + '</strong>'
+                    html += ' <p style="color:grey">' + changxiaobang1[i].author_id.name + '</p>'
+                    html += '<p>' + changxiaobang1[i].content + '</p>'
+                    html += '<div class="i-r">'
+                    html += ' <div class="fl">'
+                    html += '<i class="iconfont icon-gouwuchekong"></i>'
+                    html += ' <p>购物车</p>'
+                    html += ' </div>'
+                    html += '  &nbsp;|&nbsp;'
+                    html += ' <div class="fr"><i class="iconfont icon-xin"></i><p>收藏</p></div>'
+                    html += ' </div>'
+                    html += ' </div>'
+                    html += ' </div>'
+                }
+                var xinshubang1 = data.xinshubang;
+                var html1=''
+                for (var i = 0; i < xinshubang1.length; i++) {
+                    html1 += '<div cla`ss="box1">'
+                    html1 += '<div class="col-md-2">'
+                    html1 += '<img src="/images/54654654.jpg">'
+                    html1 += ' </div>'
+                    html1 += '  <div class="col-md-10">'
+                    html1 += '<strong>' + xinshubang1[i].name + '</strong>'
+                    html1 += ' <p style="color:grey">' + xinshubang1[i].author_id.name + '</p>'
+                    html1 += '<p>' + xinshubang1[i].content + '</p>'
+                    html1 += '<div class="i-r">'
+                    html1 += ' <div class="fl">'
+                    html1 += '<i class="iconfont icon-gouwuchekong"></i>'
+                    html1 += ' <p>购物车</p>'
+                    html1 += ' </div>'
+                    html1 += '  &nbsp;|&nbsp;'
+                    html1 += ' <div class="fr"><i class="iconfont icon-xin"></i><p>收藏</p></div>'
+                    html1 += ' </div>'
+                    html1 += ' </div>'
+                    html1 += ' </div>'
+                }
+                var totalPage = data.totalPage;
+                page = data.page;
+
+                var str='<li class="active"><a href="javascript:;">' + page + '</a></li>'
+                if (totalPage > 1) {
+
+
+                    for (var i = 1; i <= 2; i++) {
+                        if (page-i>1) {
+                            str= '<li ><a href="javascript:;" onclick="setPage(' + (parseInt(page)-parseInt(i)) + ')"> ' + (parseInt(page)-parseInt(i)) + '</a></li>'+str;
+                        }
+                        if ( (parseInt(page)+parseInt(i))<totalPage) {
+                            str=str+' '+'<li ><a href="javascript:;" onclick="setPage(' + (parseInt(page)+parseInt(i)) + ')">' + (parseInt(page)+parseInt(i)) + '</a></li>';
+                        }
+                    }
+                    if(page-3>1){
+                        str= '<li><a href="javascript:;" >...</a></li>'+str
+                    }
+                    if (page>1) {
+                        str= '<li><a href="javascript:;" onclick="setPage(' + (parseInt(page) - 1) + ')">&laquo;</a></li>'+''+str
+                    }
+
+                    if(page+3<totalPage){
+                        str= str+'<li><a href="javascript:;" >...</a></li>'
+                    }
+                    if(page<totalPage){
+                        str=str+''+'<li><a href="javascript:;" onclick="setPage(' + (parseInt(page) + 1) + ')">&raquo;</a></li>'
+                    }
+
+                    //
+                    //
+                    // <li class="disabled"><a href="#">2</a></li>
+                    // <li><a href="#">3</a></li>
+                    // <li><a href="#">4</a></li>
+                    // <li><a href="#">&raquo;</a></li>
+                }
+
+                $('.changxiaoshu').html(html);
+                $('.xinshu').html(html1);
+                $('.paihangpage').html(str);
+                $()
+            }
+            else{
+               alert(data.status);
+            }
+        })
+    }
+    function setPage(p) {
+        page = p;
+        getpaihang();
+
+    }
+</script>
+
+</body>
+</html>

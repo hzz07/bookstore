@@ -1,0 +1,455 @@
+/*pay页面*/
+@import url(pay.css);
+@import url(user.css);
+@import url(base.css);
+@import url(shangj.css);
+@import url(iconfont.css);
+/*导航栏*/
+html, body {
+    width: 100%;
+}
+
+/*非常重要的样式让背景图片100%适应整个屏幕*/
+.bg {
+
+    background-size: 100% 100%;
+    width: 100%;
+    height: 100px;
+    text-align: center;
+    color: #fff;
+}
+
+.my-navbar {
+    padding: 20px 0;
+    transition: background 0.5s ease-in-out, padding 0.5s ease-in-out;
+    position: fixed;
+    padding-left: 10%;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+
+}
+
+.my-navbar a {
+    background: transparent !important;
+}
+
+.my-navbar a:hover {
+    color: crimson !important;
+    background: transparent;
+    outline: 0
+}
+
+.my-navbar a {
+    transition: color 0.5s ease-in-out;
+}
+
+.collapse navbar-collapse {
+    width: 100%;
+!important;
+}
+
+/*-webkit-transition ;-moz-transition*/
+.top-nav {
+    padding: 0 15%;
+    background: #fff;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.3);
+}
+
+button.navbar-toggle {
+    background-color: #fbfbfb;
+}
+
+.my_from {
+    margin-right: 10%;
+!important;
+    width: 300px;
+}
+
+.mysearch-button {
+    outline: none;
+    border-radius: 100px;
+!important background-color: rgba(232, 232, 232, 0.7);
+    border: 1px solid rgba(232, 232, 232, 0.7);
+    background: transparent !important;
+}
+.mysearch-button>span{
+    color: #1a69a4;
+}
+.mysearch_input {
+    width: 20%;
+    border-radius: 100px;
+    border: 1px solid rgba(232, 232, 232, 0.7);
+    background-color: rgba(232, 232, 232, 0.7);
+    background: transparent !important;
+}
+
+.my_denglu {
+    width: 100px;
+    margin-top: 15px;
+}
+.my_denglu_nickname{
+    color: #dd4b39;!important;
+}
+.my_denglu_dengchu{
+    padding-left: 5%;
+    font-size: 11px;
+}
+.my_gouwu {
+    margin-top: 15px;
+    margin-right: 8%;
+}
+
+.my_gouwu img {
+    line-height: 18px;
+    height: 20px;
+    width: 20px;
+}
+
+.my_gouwu_shuliang {
+    color: red;
+}
+
+.my_gouwu span {
+    margin-left: 10px;
+}
+
+.my_neirong {
+    margin-top: 8%;!important;
+}
+
+/*整个背景都是transparent透明的，会看不到，所以再次覆盖一下*/
+/*button.navbar-toggle > span.icon-bar {*/
+/*background-color: #dedede*/
+/*}*/
+
+/* 登陆页面*/
+.pm_login{
+    background-color: #f2f2f2;
+    height:700px;
+    padding-top: 4%;
+}
+#header {
+    width: 200px;
+    height: 80px;
+    margin: auto;
+}
+
+#div1 {
+    width: 868px;
+    height: 475px;
+    background-color:white;
+    margin: auto;
+}
+
+.top {
+    width: 768px;
+    height: 50px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    margin: auto;
+    line-height: 50px;
+}
+
+.span1 {
+    font-size: 25px;
+    color: grey;
+
+}
+
+.span2 {
+    font-size: 15px;
+    float: right;
+    margin-right: 0px;
+    margin-top: 10px;
+    color: grey;
+}
+
+.span2 a {
+    color: red;
+    text-decoration: none;
+}
+
+.pm_login_form-horizontal {
+    width: 450px;
+    height: 300px;
+    background-color: white;
+    margin-left: 70px;
+    margin-top: 30px;
+    float: left;
+
+}
+
+#pm_login_right {
+    width: 300px;
+    height: 100px;
+    float: left;
+    margin-top: -250px;
+    margin-left: 560px;
+
+}
+
+#pm_login_span3 {
+    width: 716px;
+    height: 40px;
+    margin: auto;
+    margin-top: 10px;
+    color: gray;
+}
+
+/*输入框 按钮*/
+.pm_login_form-control1 {
+    width: 400px;
+    height: 40px;
+    margin-top: 5%;
+    background: url("../images/youxiang.png") no-repeat 360px;
+}
+
+.pm_login_form-control2 {
+    width: 400px;
+    height: 40px;
+    margin-top: 5%;
+    background: url("../images/jianpan.png") no-repeat 360px;
+}
+
+#pm_login_but {
+    width: 400px;
+    height: 40px;
+
+    margin-top: 2%;
+}
+
+.checkbox {
+
+    margin-top: 10%;
+    color: grey;
+}
+
+/*注册页面*/
+/* */
+.pm_register {
+    background-color: #f2f2f2;
+    height:700px;
+    padding-top: 4%;
+}
+
+#pm_register_header {
+    width: 200px;
+    height: 80px;
+    margin: auto;
+}
+
+#pm_register_div1 {
+    width: 868px;
+    height: 475px;
+    background-color: white;
+
+    margin: auto;
+}
+
+.top {
+    width: 768px;
+    height: 50px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    margin: auto;
+    line-height: 50px;
+}
+
+.span1 {
+    font-size: 25px;
+    color: grey;
+
+}
+
+.span2 {
+    font-size: 15px;
+    float: right;
+    margin-right: 0px;
+    margin-top: 10px;
+    color: grey;
+}
+
+.span2 a {
+    color: red;
+    text-decoration: none;
+}
+
+/*注册标签*/
+#pm_register_span2 a {
+    color: red;
+    text-decoration: none;
+}
+
+.pm_register_form-horizontal {
+    width: 450px;
+    height: 300px;
+    background-color: white;
+    margin-left: 70px;
+    margin-top: 30px;
+    float: left;
+
+}
+
+/*协议标签*/
+#pm_register_a {
+    color: red;
+    text-decoration: none;
+}
+
+#pm_register_right {
+    width: 300px;
+    height: 100px;
+    float: left;
+    margin-top: -250px;
+    margin-left: 560px;
+
+}
+
+#pm_register_span3 {
+    width: 716px;
+    height: 40px;
+    margin: auto;
+    margin-top: 10px;
+    color: gray;
+}
+
+/*输入框 按钮*/
+.pm_register_form-control1 {
+    margin-top: 5%;
+    width: 370px;
+    height: 35px;
+}
+
+.pm_register_form-control2 {
+    margin-top: 5%;
+    width: 370px;
+    height: 35px;
+    background: url("/images/youxiang.png") no-repeat 330px;
+
+}
+
+#pm_register_but {
+    width: 370px;
+    height: 40px;
+    margin-top: 5%;
+
+}
+
+.checkbox {
+    margin-top: 10%;
+    color: grey;
+}
+
+#test1 img {
+    width: 100%;
+    height: 100%;
+}
+
+.index_center {
+    width: 70%;
+    height: 500px;
+    margin: auto;
+    margin-top: 2%;
+    border: 1px solid red;
+}
+
+.index_center_tuijian {
+    float: left;
+    width: 75%;
+    height: 500px;
+    border: 1px solid red;
+}
+
+.index_center_paihang {
+    float: left;
+    margin-left: 3%;
+    width: 22%;
+    height: 500px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.index_center_tuijian_book {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+    line-height: 30px;
+}
+
+.tuijian_book1 {
+    float: left;
+}
+
+.tuijian_book2 {
+    float: right;
+    font-size: 13px;
+}
+
+.tuijian-xiangqing {
+    margin-top: 2%;
+}
+
+.tuijian-xiangqing-img {
+    width: 30%;
+    float: left;
+    height: 150px;
+
+}
+
+.tuijian-xiangqing-img img {
+    width: 100%;
+    height: 100%;
+}
+
+.tuijian-xiangqing-title {
+    width: 67%;
+    height: 150px;
+    float: left;
+
+}
+
+.xiangqing-title h4 {
+    margin-top: 7%;
+    font-weight: 600;
+    margin-left: 10%;
+}
+
+.xiangqing-title span {
+    color: grey;
+    margin-left: 10%;
+    font-size: 14px;
+    margin-top: 3%;
+    display: block;
+}
+
+.xiangqing-title-content {
+    display: block;
+    height: 30px;
+    margin-top: 3%;
+    color: grey;
+    margin-left: 10%;
+    font-size: 11px;
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.goumai {
+    width: 80%;
+    margin-left: 10%;
+    background-color: #3790ef;
+    color: #F2F2F2;
+    margin-top: 3%;
+    border-color:transparent;
+}
+.goumai:hover{
+    transition:border-color .3s ease-in .1s, background-color .3s ease-in .1s, color .3s ease-in .1s;
+    background-color:white;
+    color: #000;
+}
+
+.mycontainer {
+    margin-top: 2%;
+}
+
+.mypaihang {
+    margin-top: 30px !important;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    background-color: white;
+}

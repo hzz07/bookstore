@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=ejs">
+    <title>Document</title>
+    <link rel='stylesheet' href='/css/bootstrap.min.css'>
+    <link rel='stylesheet' href='/css/laydate.css'>
+    <link rel="stylesheet" href="/sematic/semantic.min.css">
+    <link rel='stylesheet' href='/css/main.css'>
+</head>
+<body>
+<%- include('./Nav') %>
+<div class="container my_neirong">
+
+    <!--当前位置-->
+    <ol class="breadcrumb">
+        <li><a href="#">当前位置所在：融智教育</a></li>
+        <li><a href="#">个人中心</a></li>
+        <li class="active">我的书架</li>
+    </ol>
+
+    <!--信息列表-->
+    <div class="row">
+        <!--左侧列表-->
+        <div class="col-md-3">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-2" aria-expanded="false">
+                <img src="/images/list.svg" alt="" id="pc_bs">
+            </button>
+            <div class="list-group">
+
+                <div class="collapse navbar-collapse " >
+                    <a href="#javascript;:"  href="#home" class="list-group-item pc_active">个人中心</a>
+                    <a href="#"  class="list-group-item biaoti">我的书架</a>
+                    <a href="#"  class="list-group-item biaoti" >我的订单</a>
+                    <a href="#"  class="list-group-item biaoti" >个人设置</a>
+                    <a href="#"  class="list-group-item biaoti">隐私设置</a>
+                    <a href="#"  class="list-group-item biaoti">地址管理</a>
+                </div>
+
+            </div>
+        </div>
+        <div class="col-md-9">
+                <!--我的书架-->
+                <%-include('./users/user_mybook')%>
+                <!--我的订单-->
+                <%-include('./users/user_myorder')%>
+                <!--个人设置-->
+                <%-include('./users/user_setter')%>
+                <!--个人设置-->
+                <%-include('./users/user_dizhi')%>
+                <!--个人设置-->
+                <%-include('./users/user_yinsi')%>
+
+        </div>
+
+    </div>
+</div>
+<script src="/javascripts/jquery-3.2.1.min.js"></script>
+<script src="/javascripts/laydate.js"></script>
+<script src="/javascripts/bootstrap.min.js"></script>
+<script src="/sematic/semantic.min.js"></script>
+<script src="/javascripts/public.js"></script>
+<script src="/javascripts/personal.js"></script>
+</body>
+</html>
+<script>
+    //执行一个laydate实例
+    laydate.render({
+        elem: '#test1'
+        ,format: 'yyyy年MM月dd日'
+    });
+
+    /*待付款*/
+    var a = document.getElementById ("pc_1");
+    var aa = document.getElementById ("pc_2");
+    var b = document.getElementById ("pc_3");
+    var bb = document.getElementById ("pc_4");
+    var c = document.getElementById ("pc_5");
+    var cc = document.getElementById ("pc_6");
+    function show(){
+        a.style.display="none";
+        aa.style.display="none";
+        c.style.display="none";
+        cc.style.display="none";
+        b.style.display="inline";
+        bb.style.display="inline";
+    }
+    show();
+    function hide(){
+        a.style.display="inline";
+        aa.style.display="inline";
+        b.style.display="none";
+        bb.style.display="none";
+    }
+    function next(){
+        c.style.display="inline";
+        cc.style.display="inline";
+        aa.style.display="none";
+    }
+    window.onload = function(){
+        var s = document.getElementById("pingStar");
+        m = document.getElementById("dir"),
+            n = s.getElementsByTagName("li"),
+            input = document.getElementById("startP");//保存所选值
+        clearAll = function(){
+            for(var i = 0;i < n.length;i++){
+                n[i].className = "";
+            }
+        }
+        for(var i = 0;i < n.length;i++){
+            n[i].onclick = function(){
+                var q = this.getAttribute("rel");
+                clearAll();
+                input.value = q;
+                for(var i = 0;i < q;i++){
+                    n[i].className = "on";
+                }
+                m.innerHTML = this.getAttribute("title");
+            }
+            n[i].onmouseover = function(){
+                var q = this.getAttribute("rel");
+                clearAll();
+                for(var i = 0;i < q;i++){
+                    n[i].className = "on";
+                }
+                m.innerHTML = this.getAttribute("title");
+            }
+            n[i].onmouseout = function(){
+                clearAll();
+                for(var i = 0;i < input.value;i++){
+                    n[i].className = "on";
+                }
+
+            }
+        }
+    }
+
+
+
+
+</script>

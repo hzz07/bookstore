@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=ejs">
+    <title>Document</title>
+    <link rel='stylesheet' href='/css/bootstrap.min.css'>
+    <link rel="stylesheet" href="/layui/css/layui.css">
+    <link rel='stylesheet' href='/css/main.css'>
+    <link rel='stylesheet' href='/css/bookstore.css'>
+    <!--<link rel='stylesheet' href='/css/normalize.css'>-->
+
+</head>
+<body>
+<%- include('./Nav') %>
+<!--轮播图-->
+<div>
+    <div class="layui-carousel" id="test1">
+        <div carousel-item>
+            <div><img src="/images/1.jpg" alt=""></div>
+            <div><img src="/images/2.jpg" alt=""></div>
+            <div><img src="/images/3.jpg" alt=""></div>
+        </div>
+    </div>
+</div>
+<div class="container mycontainer">
+    <div class="row">
+        <!--推荐好书-->
+        <div class="col-md-9">
+            <div class="index_center_tuijian_book">
+            <span class="tuijian_book">
+                推荐好书
+            </span>
+                <span class="tuijian_book2">
+                <a href="/recommend">查看往期推荐》</a>
+            </span>
+
+            </div>
+            <div class="row tuijian-xiangqing">
+                <% for(var i = 0;i < 4;i++){ %>
+                    <div class="col-sm-6 col-md-6">
+                    <div class="thumbnail">
+                        <img src="/images/65465465.jpg">
+                        <div class="caption xiangqing-title">
+                            <h4><%= tui_book[i].name %></h4>
+                            <span><%= tui_book[i].author_id.name %></span>
+                            <p class="xiangqing-title-content"><%= tui_book[i].content %></p>
+                            <p><a href="/bookdetails/<%=tui_book[i]._id%>" class="btn btn-danger goumai">购买</a></p>
+                        </div>
+                    </div>
+                </div>
+                <% } %>
+                <div class="row">
+                    <img style="width: 100%" src="/images/56465465.jpg">
+                </div>
+                <!--最近上架-->
+                <div class="row ">
+                    <div class="col-md-12">
+                        <div class="index_center_tuijian_book" style="margin-top: 3%">
+                            <span class="tuijian_book">
+                                最新上架
+                            </span>
+                            <span class="tuijian_book2">
+                            <a href="/recommend">更多》</a>
+                            </span>
+                        </div>
+                        <div class="row">
+                            <% for(var i=0;i<12;i++){%>
+                            <div class="col-sm-4 col-md-3">
+                                <div class="thumbnail">
+                                    <img src="/images/65465465.jpg">
+                                    <div class="caption">
+                                        <h3><%=locals.xinshu[i].name %></h3>
+                                        <p>￥<%=(locals.xinshu[i].price)/100%></p>
+                                        <p><a href="/bookdetails/<%=locals.xinshu[i]._id%>" class="btn btn-danger goumai">点击查看</a></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <%}%>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!--排行榜-->
+        <div class="col-md-3 ">
+            <%-include('ranking')%>
+        </div>
+    </div>
+
+
+</div>
+<!--底部-->
+<%- include('footer') %>
+</body>
+</html>
+<script src="/javascripts/jquery-3.2.1.min.js"></script>
+<script src="/javascripts/bootstrap.min.js"></script>
+<script src="/layui/layui.js"></script>
+<script src="/javascripts/public.js"></script>
+<script>
+    /*轮播图*/
+    layui.use('carousel', function () {
+        var carousel = layui.carousel;
+        //建造实例
+        carousel.render({
+            elem: '#test1'
+            , width: '100%' //设置容器宽度
+            , arrow: 'hover'
+            , height: '400px'//始终显示箭头
+            //,anim: 'updown' //切换动画方式
+        });
+    });
+</script>

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <meta charset="utf-8"/>
+    <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style type="text/css">
+        /*导航栏*/
+        html, body {
+            width: 100%;
+            height: 100%;
+        }
+
+        /*非常重要的样式让背景图片100%适应整个屏幕*/
+        .bg {
+            display: table;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            color: #fff;
+            background-size: cover;
+        }
+
+        .my-navbar {
+            padding: 20px 0;
+            transition: background 0.5s ease-in-out, padding 0.5s ease-in-out;
+            position: fixed;
+            padding-left: 15%;
+
+        }
+
+        .my-navbar a {
+            background: transparent !important;
+            color: black !important
+        }
+
+        .my-navbar a:hover {
+            color: #45bcf9 !important;
+            background: transparent;
+            outline: 0
+        }
+
+        .my-navbar a {
+            transition: color 0.5s ease-in-out;
+        }
+        .collapse navbar-collapse{
+            width: 100%;!important;
+        }
+        /*-webkit-transition ;-moz-transition*/
+        .top-nav {
+
+            padding: 0 15%;
+            background: #fff;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        button.navbar-toggle {
+            background-color: #fbfbfb;
+        }
+        .my_from{
+            margin-right: 10%;!important;
+            width: 300px;
+        }
+
+        .my_button{
+            outline:none;
+            border-radius: 100px;
+        }
+        .mysearch_input{
+            width:20%;
+            border-radius: 100px;
+            border: 1px solid rgba(232,232,232,0.7);
+            background-color: rgba(232,232,232,0.7);
+            background: transparent !important;
+        }
+        .my_denglu{
+            width: 100px;
+            margin-top: 15px;
+        }
+        .my_gouwu{
+            margin-top: 15px;
+            margin-right:10%;
+        }
+        .my_gouwu img{
+            line-height: 18px;
+            height: 20px;
+            width: 20px;
+        }
+        .my_gouwu span{
+            margin-left: 10px;
+        }
+        /*整个背景都是transparent透明的，会看不到，所以再次覆盖一下*/
+        /*button.navbar-toggle > span.icon-bar {*/
+        /*background-color: #dedede*/
+        /*}*/
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-fixed-top my-navbar" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">菜鸟教程</a>
+        </div>
+        <div class="collapse navbar-collapse" id="example-navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">首页</a></li>
+                <li><a href="#">分类</a></li>
+                <li>
+                    <a href="#">排行榜</a>
+                </li>
+            </ul>
+
+            <div class="nav navbar-nav navbar-right my_gouwu">
+                <img src="public/images/gouwuche.png" alt="">
+                <span>购物车</span>
+                <span>0</span>
+            </div>
+            <div class="nav navbar-nav navbar-right my_denglu">
+                <a href="">登陆</a><span>&nbsp;&nbsp;/&nbsp;&nbsp;</span><a href="">注册</a>
+            </div>
+            <form class="navbar-form navbar-right my_from">
+                <div class="input-group mysearch">
+                    <input type="text" class="form-control mysearch_input" placeholder="Search for...">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default  my_button " type="button"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                    </span>
+                </div>
+            </form>
+        </div>
+    </div>
+</nav>
+
+<div class="bg">
+    <img src="public/images/banner.jpg" alt="" width="100%;height:100%">
+</div>
+<br/><br/><br/><br/><br/><br/><br/>
+<p><a href="www.xiandanke.com">闲蛋客</a></p>
+<script>
+    $(window).scroll(function () {
+        if ($(".navbar").offset().top > 50) {
+            $(".navbar-fixed-top").addClass("top-nav");
+        } else {
+            $(".navbar-fixed-top").removeClass("top-nav");
+        }
+    })</script>
+</body>
+</html>

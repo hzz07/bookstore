@@ -1,0 +1,315 @@
+
+/*我的书架*/
+#pc_logo{
+    margin-bottom: 10px
+}
+#pc_logo img{
+    width: 130px;
+    height: 35px;
+}
+#pc_logo1{
+    width: 20px;
+    height: 20px;
+
+    margin-top: 15px;
+    margin-left: 20px
+}
+.pc_span {
+    border: 1px solid grey;
+    padding: 10px;
+    border-radius: 5px;
+}
+.pc_btn{
+    border: 1px solid grey;
+    padding: 10px 20px 10px 20px
+}
+.pc_active{
+    border-left: 3px solid red;
+    border-radius: 4px;
+    background-color: #EEECEC
+}
+#pc_bs{
+    z-index: 20;
+    position:relative;
+
+}
+/*.pc_right{*/
+    /*margin-top:50px*/
+/*}*/
+
+/*个人设置*/
+
+#pc_div {
+    width: 100%;
+    text-align: center
+}
+
+.pc_active {
+    border-left: 3px solid red;
+    border-radius: 4px;
+    background-color: #EEECEC
+}
+#pc_top{
+    margin-top: 20px;
+    box-sizing: border-box;
+    height: 35px;
+    border-bottom: 2px solid #EEECEC
+}
+#pc_top span{
+    margin: 0px 25px 0px 35px;
+    font-size: 17px;
+    padding: 2px 0 11px 0;
+}
+.pc_top-active{
+    border-bottom: 3px solid red;
+}
+#pc_bottom{
+    margin-top: 20px;
+    box-sizing: border-box;
+    height: 35px;
+
+}
+#pc_man{
+
+    width: 350px;
+    text-align: center
+}
+#pc_man img{
+    padding-top: 80px;
+    padding-bottom: 20px
+}
+#pc_xinxi{
+    width: 450px;
+    height: 200px
+}
+#pc_xinxi table{
+    margin: 85px 0 0 40px;
+}
+#pc_xinxi table tr td{
+    width: 160px
+}
+#pc_title{
+    height: 750px
+}
+#pc_bs{
+    z-index: 20;
+    position:relative;
+}
+
+/*我的订单*/
+.pc_active {
+    border-left: 3px solid red;
+    border-radius: 4px;
+    background-color: #EEECEC;
+}
+#pc_top{
+    box-sizing: border-box;
+    height: 35px;
+    border-bottom: 2px solid #EEECEC
+}
+#pc_top li{
+    box-sizing: border-box;
+
+    font-size: 17px;
+    padding: 2px 0 6px 0;
+    width:110px;
+    text-align: center
+}
+.pc_top-active{
+    border-bottom: 3px solid red;
+}
+#pc_bottom{
+    margin-top: 20px;
+    box-sizing: border-box;
+    height: 35px;
+
+}
+#pc_man{
+
+    width: 350px;
+    text-align: center
+}
+#pc_man img{
+    padding-top: 80px;
+    padding-bottom: 20px
+}
+#pc_xinxi{
+    width: 450px;
+    height: 200px
+}
+#pc_xinxi table{
+    margin: 85px 0 0 40px;
+}
+#pc_xinxi table tr td{
+    width: 160px
+}
+#pc_title{
+    height: 750px
+}
+#pc_bs{
+    z-index: 20;
+    position:relative;
+}
+#pc_bs{
+    z-index: 20;
+    position:relative;
+}
+/*.pc_right{*/
+    /*margin-top: 50px*/
+/*}*/
+/* 订单待付款*/
+
+.table tr td img {
+    width: 90px;
+}
+.starts{
+    padding-left: 37%;
+    padding-bottom: 50px
+
+}
+.starts ul{
+    float:left;
+}
+.starts ul li{
+    list-style: none;
+    width:32px;
+    height:21px;
+    float:left;
+    background:url(/images/stark2.png) no-repeat;
+
+}
+.starts ul li.on{
+    background:url(/images/stars2.png) no-repeat;
+}
+.starts ul span{
+    display:inline;
+    float:left;
+    padding-left:10px;
+    height:21px;
+    line-height:21px;
+}
+#pc_bs{
+    z-index: 20;
+    position:relative;
+}
+/*.{*/
+    /*margin-top: 10%;*/
+/*}*/
+.setter_pc_bottom{
+
+}
+.setter_pc_bottom1{
+    width: 40%;
+    float: left;
+    margin-top: 5%;
+    padding-left: 3%;
+    text-align: center;
+}
+
+.setter_pc_bottom2{
+    width: 60%;
+    float: left;
+    margin-top: 8%;
+}
+.setter_pc_table{
+    width: 70%;
+}
+
+/*隐私设置*/
+
+
+.pc_yinsi{
+    margin-top: 5%;
+}
+.pc_yinsi input {
+    width: 70%;
+    height: 30px;
+    border: 1px solid rgba(0,0,0,0.1);
+    margin-top: 1%;
+}
+.pc_yinsi span{
+    display: block;
+    margin-top: 1%;
+}
+
+/*地址管理*/
+.pc_header-3-right-shouhuo {
+    width: 100%;
+    border-radius: 5px;
+    background-color: #eeecec;
+    line-height: 30px;
+    height: 30px;
+}
+
+.pc_header-3-right-shouhuo span {
+    margin-left: 5%;
+}
+
+.pc_shouhuo_btn {
+    height: 35px;
+    width: 100px;
+}
+
+.pc_header-3-article {
+    margin-top: 4%;
+}
+
+.pc_shouhuo_table {
+    border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.pc_shouhuo_table tr th {
+    text-align: center;
+    background-color: #f2f2f2;
+    height: 40px;
+    color: rgb(240, 120, 122);
+    font-weight: 100;
+}
+
+.pc_shouhuo_table tr td {
+    width: 13%;
+    font-size: 13px;
+    text-align: center;
+    height: 60px;
+}
+
+.pc_shouhuo_input {
+    height: 400px;
+}
+
+.pc_shouhuo_input input {
+    margin-top: 5%;
+
+}
+
+.pc_shouhuo_ming_div {
+    margin-top: 5%;
+}
+
+.pc_shouhuo_input .textarea {
+    height: 200px;
+    width: 100%;
+}
+.pc_shouhuo_xing {
+    color: #ec6b6d;
+}
+
+.pc_shouhuo-baocun {
+
+    text-align: center;
+}
+
+.pc_shouhuo-baocun button {
+    width: 100px;
+    background-color: #ec6b6d;
+}
+
+.btn1 {
+    background-color: rgb(250, 226, 227);
+    border: 1px solid rgb(240, 120, 122);
+}
+
+.btn2 {
+    background-color: rgb(240, 120, 122);
+    color: white
+}

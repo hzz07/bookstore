@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>推荐好书</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <!--bootstrap官方样式-->
+    <link rel="stylesheet" href="/css/normalize.css">
+    <!--强跨浏览器表现的一致性css 重置样式-->
+    <link rel="stylesheet" href="/css/bookstore.css">
+    <!--自用样式-->
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+    <!--头部-->
+    <%-include('nav')%>
+    <!--路径导航-->
+    <div class="container my_neirong">
+        <ol class="breadcrumb" style="background: rgba(212,212,212,0.5)">
+            <li><a href="/">首页</a></li>
+            <li class="active">推荐好书</li>
+        </ol>
+    </div>
+    <!--推荐好书-->
+    <div class="container ">
+        <div class="row">
+            <div class="col-md-9 ">
+                <!--内容-->
+                <div class="col-md-12 ">
+                    <div class="col-md-12">
+                        <div id="div">
+                            <strong>畅销好书</strong>
+                        </div>
+
+                        <!--一本书-->
+                        <%for(var i=0;i<changxiaobook.length;i++){%>
+                        <div class="row">
+                            <div class="box1">
+                                <div class="col-md-2">
+                                    <img src="/images/54654654.jpg">
+                                </div>
+
+                                <div class="col-md-10">
+                                    <div class="col-md-12">
+                                        <strong><%=changxiaobook[i].name%></strong>
+                                        <p><%=changxiaobook[i].author_id.name%></p>
+                                        <p class="box_content"><%=changxiaobook[i].content%></p>
+
+                                        <div class="i-r">
+                                            <div class="fl">
+                                                <i class="iconfont icon-gouwuchekong"></i>
+                                                <p>购物车</p>
+                                            </div>
+                                            &nbsp;|&nbsp;
+                                            <div class="fr"><i class="iconfont icon-xin"></i><p>收藏</p></div>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+                        <%}%>
+                    </div>
+                </div>
+                <!--分页-->
+                <div class="text-center">
+                    <nav aria-label="Page navigation">
+                        <%if(totalPage>=0){%>
+                        <ul class="pagination">
+                            <%if(page>1){%>
+                            <li>
+                                <a href="?page=<%parseInt(page)-1%>" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li>
+                            <%}%>
+                            <li><a href="?page=1" aria-label="Previous">
+                                    <span aria-hidden="true">第<%= page %>页/共<%= totalPage %>页</span>
+                                </a>
+                            </li>
+
+                            <% if(totalPage > page){ %>
+                            <li>
+                                <a href="?page=<%= parseInt(page) + 1 %>" aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li>
+                            <% } %>
+                        </ul>
+                        <%}%>
+                    </nav>
+                </div>
+            </div>
+            <div class="col-md-3 ">
+                <%-include('ranking')%>
+            </div>
+        </div>
+    </div>
+    <!--底部-->
+    <%-include('footer')%>
+</body>
+<script src="/javascripts/jquery-3.2.1.min.js"></script><!--jquery-->
+<script src="/javascripts/bootstrap.min.js"></script><!--bootstrap官方js-->
+<script src="/javascripts/public.js"></script>
+</html>

@@ -1,0 +1,54 @@
+.w img{
+    float: left;
+    height:40px;
+    width: auto;
+}
+.w .fl ul{
+    float:left;
+}
+.w .fl ul li{
+    float:left;
+    width:100px;
+    text-align: center;
+}
+.fr div{
+    float: left;
+    margin-right: 20px;
+    margin-top: 8px;
+    width: 100px;
+}
+#div{
+    height: 50px;
+    line-height: 70px;
+    text-align: left;
+    border-bottom:1px solid lightgrey;
+}
+.box{
+
+    border-bottom: 1px solid lightgrey;
+}
+.box1{
+    height: 100px;
+    margin-top: 20px;
+}
+.box1 img{
+    float: left;
+    height:100px;
+    width: auto;
+}
+.box_content{
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-line-clamp:4;
+    -webkit-box-orient: vertical;
+}
+.i-r{
+    float:right;
+    text-align: center;
+}
+.f-r01{
+
+    float: left;
+}
+
+

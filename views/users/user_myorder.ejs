@@ -1,0 +1,167 @@
+
+<!--我的订单-->
+<div class="pay">
+    <div id="myorder">
+        <div class="pc_right">
+            <!--上部-->
+            <div id="pc_top">
+                <ul class="list-inline ">
+                    <li>我的订单</li>
+                    <li class="pc_top-active">全部</li>
+                    <li>待付款</li>
+                    <li>代发货</li>
+                    <li>待收货</li>
+                    <li>待评价</li>
+                </ul>
+            </div>
+            <!--下部-->
+            <div id="pc_bottom" class="row">
+                <table class='table table-bordered text' style="text-align: center">
+                    <tr  class="active">
+                        <td>订单号</td>
+                        <td>商品</td>
+                        <td>金额</td>
+                        <td>时间</td>
+                        <td>付款状态</td>
+                        <td>订单状态</td>
+                        <td>操作</td>
+                    </tr>
+                    <tr>
+                        <td>256465456456465</td>
+                        <td>魔兽世界</td>
+                        <td>￥ 24.00</td>
+                        <td>2018-02-11 11：21</td>
+                        <td>未付款</td>
+                        <td>未完成</td>
+                        <td><button class="btn-danger btn">付款</button>
+                            <p class="text-muted">取消订单</p>
+                            <p class="text-danger">查看</p>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+
+        </div>
+    </div>
+    <div id="myneedorder">
+        <div class="pc_right">
+            <div id="">
+                <ul class="list-inline">
+                    <li>订单号：</li>
+                    <li class="text-danger">20180211284311</li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <li>订单状态：</li>
+                    <li class="text-danger">未完成</li>
+                </ul>
+                <ul class="list-inline">
+                    <li>收货地址：</li>
+                    <li>河南省郑州市XXXXXXXXX-1205-10号</li>
+                </ul>
+                <ul class="list-inline">
+                    <li>收件人：</li>
+                    <li>王牛牛</li>
+                </ul>
+                <ul class="list-inline">
+                    <li>电话：</li>
+                    <li>13859873675</li>
+                </ul>
+                <!--19页面-->
+                <ul class="list-inline" id="pc_1">
+                    <li >物流信息：</li>
+                    <li >圆通快递126789876</li>
+                </ul>
+                <ul class="list-inline text-right">
+                    <li  id="pc_3"><button class="btn btn-danger" onclick="hide()">立即付款</button></li>
+                    <li id="pc_4"><button class="btn btn-default">取消订单</button></li>
+                    <!--19页面-->
+                    <li id="pc_2"><button class="btn  btn-danger" onclick="next()" >确认收货</button></li>
+                </ul>
+
+            </div>
+
+            <div id="">
+                <table class="table ">
+                    <tr class="active">
+                        <td>购买信息</td>
+                        <td>金额</td>
+                        <td>数量</td>
+                        <td>小计</td>
+                        <td ><p id="pc_5">评价</p></td>
+                    </tr>
+                    <tr>
+                        <td><img src="/images/booke-1.png" alt=""></td>
+                        <td>￥24.00</td>
+                        <td>1</td>
+                        <td>￥24.00</td>
+                        <td ><buttom class="btn btn-danger" id="pc_6" data-toggle="modal" data-target=".bs-example-modal-lg1">评价</buttom></td>
+                    </tr>
+                    <tr class="active">
+                        <td colspan="5" class="text-right">
+                            <ul class="list-inline">
+                                <li>商品总金额</li>
+                                <li class="text-danger">￥ 3.00</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr class="active">
+                        <td colspan="5" class="text-right">
+                            <ul class="list-inline">
+                                <li>应付金额</li>
+                                <li class="text-danger">￥ 3.00</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="5" class="text-right text-danger" onclick="show()">
+                            返回 》
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+        </div>
+
+        <!--模态框-->
+        <div class="modal fade bs-example-modal-lg1" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+            <div  class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <!--模态框头-->
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">评论</h4>
+                    </div>
+                    <!--模态框身-->
+                    <div class="modal-body">
+                        <div class="starts center-block">
+                            <ul id = "pingStar" class="center-block">
+                                <li rel = "1" title = "特别差，给1分"></li>
+                                <li rel = "2" title = "很差，给2分"></li>
+                                <li rel = "3" title = "一般，给3分"></li>
+                                <li rel = "4" title = "很好，给4分"></li>
+                                <li rel = "5" title = "非常好，给5分"></li>
+                                <span id="dir"></span>
+                            </ul>
+                            <input type="hidden" value="" id = "startP" />
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12  ">
+                                <textarea rows="7" cols="50" style="resize: none" class="center-block"></textarea>
+
+                            </div>
+                        </div>
+                        <div>
+
+                        </div>
+                    </div>
+                    <!--模态框脚-->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger center-block " data-dismiss="modal">发布评论</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
