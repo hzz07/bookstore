@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=ejs">
     <title>Document</title>
     <link rel='stylesheet' href='/css/bootstrap.min.css'>
-    <link rel='stylesheet' href='/css/laydate.css'>
+    <link rel='stylesheet' href='/layui/css/layui.css'>
     <link rel="stylesheet" href="/sematic/semantic.min.css">
     <link rel='stylesheet' href='/css/main.css'>
 </head>
@@ -50,17 +50,18 @@
                 <%-include('./users/user_myorder')%>
                 <!--个人设置-->
                 <%-include('./users/user_setter')%>
-                <!--个人设置-->
-                <%-include('./users/user_dizhi')%>
-                <!--个人设置-->
+                <!--隐私设置-->
                 <%-include('./users/user_yinsi')%>
+                <!--地址管理-->
+                <%-include('./users/user_dizhi')%>
+
 
         </div>
 
     </div>
 </div>
 <script src="/javascripts/jquery-3.2.1.min.js"></script>
-<script src="/javascripts/laydate.js"></script>
+<script src="/layui/layui.js"></script>
 <script src="/javascripts/bootstrap.min.js"></script>
 <script src="/sematic/semantic.min.js"></script>
 <script src="/javascripts/public.js"></script>
@@ -68,12 +69,19 @@
 </body>
 </html>
 <script>
-    //执行一个laydate实例
-    laydate.render({
-        elem: '#test1'
-        ,format: 'yyyy年MM月dd日'
-    });
-
+    layui.use(['form', 'layedit', 'laydate'], function() {
+        var form = layui.form
+            , layer = layui.layer
+            , layedit = layui.layedit
+            , laydate = layui.laydate;
+        //执行一个laydate实例
+        laydate.render({
+            elem: '#date'
+        });
+        laydate.render({
+            elem: '#date1'
+        });
+    })
     /*待付款*/
     var a = document.getElementById ("pc_1");
     var aa = document.getElementById ("pc_2");

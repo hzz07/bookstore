@@ -1,92 +1,94 @@
 <div class="pay" id="settings">
-     <!--右侧列表-->
-     <div class=" pc_right">
-                <!--上部-->
-                <div id="pc_top">
-                    <span>个人设置</span>
-                    <span class="pc_top-active">个人信息</span>
-                </div>
-                <!--下部-->
-                <div id="setter_pc_bottom" class="row">
-                    <!--左头像-->
-                    <div class="setter_pc_bottom1" id="">
-                        <div>
-                            <img src="/images/man.svg" alt="">
+    <!--右侧列表-->
+    <div class=" pc_right">
+        <!--上部-->
+        <div id="pc_top">
+            <span>个人设置</span>
+            <span class="pc_top-active">个人信息</span>
+        </div>
+        <!--下部-->
+        <div id="setter_pc_bottom" class="row">
+            <!--左头像-->
 
-                        </div>
-                        <span class="text-danger">
+            <input type="hidden" value="" id="imgdata">
+            <input type="hidden" value="" id="suffix">
+            <div class="setter_pc_bottom1" id="">
+                <div id="avatar">
+
+                </div>
+                <input type="file" onchange="preview2(this)" class="xiugai">
+                <span class="text-danger">
                            修改头像
                        </span>
-                    </div>
-                    <!--右信息-->
-                    <div class="setter_pc_bottom2" id="">
-                        <div>
-                            <table class="setter_pc_table">
-                                <tr>
-                                    <td>邮箱：</td>
-                                    <td>781156289@qq.com</td>
-                                    <td class="text-danger" data-toggle="modal" data-target=".bs-example-modal-lg">编辑</td>
-                                </tr>
-                                <tr>
-                                    <td>昵称：</td>
-                                    <td>王牛牛</td>
-                                </tr>
-                                <tr>
-                                    <td>性别：</td>
-                                    <td>男</td>
-                                </tr>
-                                <tr>
-                                    <td>出生日期：</td>
-                                    <td>1962-04-24</td>
-                                </tr>
-                                <tr>
-                                    <td>自我介绍：</td>
-                                </tr>
-                            </table>
-                        </div>
-                    </div>
+            </div>
+            <!--右信息-->
+            <div class="setter_pc_bottom2" id="">
+                <div>
+                    <table class="setter_pc_table">
+                        <tr>
+                            <td>邮箱：</td>
+                            <td><span id="email"></span></td>
+                            <td class="text-danger" data-toggle="modal" data-target=".bs-example-modal-lg">编辑</td>
+                        </tr>
+                        <tr>
+                            <td>昵称：</td>
+                            <td><span id="nickname"></span></td>
+                        </tr>
+                        <tr>
+                            <td>性别：</td>
+                            <td><span id="sex1"></span></td>
+                        </tr>
+                        <tr>
+                            <td>手机号码：</td>
+                            <td><span id="phone1"></span></td>
+                        </tr>
+
+                    </table>
                 </div>
             </div>
+        </div>
+    </div>
     <!--模态框-->
     <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
-        <div  class="modal-dialog" role="document">
+        <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <!--模态框头-->
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true">&times;</span></button>
                     <h4 class="modal-title" id="myModalLabel">编辑资料</h4>
                 </div>
                 <!--模态框身-->
                 <div class="modal-body">
                     <div class="row">
-                        <div class="col-md-2 col-md-offset-2">昵称</div>
-                        <div class="col-md-2 "><input type="text" class="input"></div>
-                    </div>        <br>
-                    <div class="row">
-                        <div class="col-md-2 col-md-offset-2">性别</div>
-                        <div class="col-md-3 "><input type="radio" name="radiobutton" value="man" checked > 男
-                            <input type="radio" name="radiobutton" value="woman" > 女 </div>
-                    </div>        <br>
-                    <div class="row">
-                        <div class="col-md-2 col-md-offset-2">出生年月</div>
-                        <div class="col-md-2 "><input type="text" class="layui-input" id="test1"></div>
+                        <div class="col-md-3 col-md-offset-2"><label class="layui-form-label">昵称：</label></div>
+                        <div class="col-md-6 ">
+
+                            <input id="newnickname" type="tel" name="phone" lay-verify="required|phone" autocomplete="off"
+                                   class="layui-input">
+                        </div>
                     </div>
                     <br>
                     <div class="row">
-                        <div class="col-md-2 col-md-offset-2">自我介绍</div>
-
-                        <div class="col-md-2 ">
-                            <textarea rows="7" cols="23" style="resize: none"></textarea>
-
+                        <div class="col-md-3 col-md-offset-2"><label class="layui-form-label">性别：</label></div>
+                        <div class="col-md-3 " id="newsex">
+                            <input type="radio" name="radiobutton" value="1" checked> 男
+                            <input type="radio" name="radiobutton" value="0"> 女
                         </div>
                     </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-md-3 col-md-offset-2"><label class="layui-form-label">电话：</label></div>
+                        <div class="col-md-6 ">
+                            <input id="phone" type="tel" name="phone" lay-verify="required|phone" autocomplete="off"
+                                   class="layui-input">
+                        </div>
+                    </div>
+                    <br>
                 </div>
                 <!--模态框脚-->
                 <div class="modal-footer text-center">
-
-                    <button type="button" class="btn btn-primary " data-dismiss="modal">保存</button>
-                    <button type="button" class="btn btn-default">修改</button>
-
+                    <button type="button" class="btn btn-default" onclick="update()">修改</button>
                 </div>
             </div>
         </div>

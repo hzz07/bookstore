@@ -5,10 +5,11 @@
         <div class="pc_header-3-right">
             <div class="pc_header-3-right-shouhuo"><span>收货地址</span></div>
             <br>
-            <input type="button" class="btn btn-danger pc_shouhuo_btn" value="新增地址" data-toggle="modal"
+            <input type="button" class="btn btn-danger pc_shouhuo_btn" value="新增地址" id="xinzeng" data-toggle="modal"
                    data-target="#xinzengdizhi">
+            <input type="hidden" id="id" value="">
             <div class="pc_header-3-article">
-                <table class="pc_shouhuo_table">
+                <table class="pc_shouhuo_table" id="address">
                     <tr>
                         <th>收货人</th>
                         <th>所在地区</th>
@@ -18,7 +19,7 @@
                         <th>操作</th>
                         <th></th>
                     </tr>
-                    <tr>
+                    <tr >
                         <td>王牛牛</td>
                         <td>河南省郑州市xx室内</td>
                         <td>昆山东路0987-3-4-2</td>
@@ -63,15 +64,15 @@
                 <div class="modal-body">
                     <div class="pc_shouhuo_input">
                         <span class="pc_shouhuo_ming">收货人姓名</span> <span class="pc_shouhuo_xing">*</span>：
-                        <input type="name" class="form-control" id="exampleInputEmail1" placeholder="name">
+                        <input type="name" class="form-control" id="address_name" placeholder="name">
                         <span class="pc_shouhuo_ming">手机号</span><span class="pc_shouhuo_xing">*</span>：
-                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="phone">
+                        <input type="email" class="form-control" id="address_phone" placeholder="phone">
                         <div class="pc_shouhuo_ming_div"><span class="pc_shouhuo_ming_end">地址</span><span
-                                    class="pc_shouhuo_xing">*</span>：<textarea type="text" class="textarea"></textarea></div>
+                                    class="pc_shouhuo_xing">*</span>：<textarea type="text" class="textarea" id="address_dizhi"></textarea></div>
                     </div>
                 </div>
                 <div class="modal-footer pc_shouhuo-baocun ">
-                    <button type="button" class="btn btn-primary">保存</button>
+                    <button type="button" class="btn btn-primary" onclick="addDress()">保存</button>
                 </div>
             </div>
         </div>

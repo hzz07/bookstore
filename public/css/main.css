@@ -18,7 +18,10 @@ html, body {
     text-align: center;
     color: #fff;
 }
-
+a{
+    color: black;!important;
+    text-decoration: none;!important;
+}
 .my-navbar {
     padding: 20px 0;
     transition: background 0.5s ease-in-out, padding 0.5s ease-in-out;
@@ -452,4 +455,18 @@ button.navbar-toggle {
     margin-top: 30px !important;
     border: 1px solid rgba(0, 0, 0, 0.2);
     background-color: white;
+}
+.xiugai{
+    position:absolute;
+    width:269px;
+    height: 148px;
+    margin-top: -130px;
+    opacity:0.0;
+}
+.layui-form-label{
+    width:100px;
+}
+#avatar img{
+    width: 150px;
+    height: 150px;
 }
