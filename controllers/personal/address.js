@@ -118,7 +118,6 @@ const Address = {
         //手机号
         //地址
     },
-
     //删除
     del: (req, res, next) => {
         Array.prototype.del=function(n) {　//n表示第几项，从0开始算起。
