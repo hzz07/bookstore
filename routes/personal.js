@@ -4,10 +4,10 @@ const Collect=require('../controllers/personal/collect');
 const User=require('../controllers/personal/user');
 const Auth=require('../middleware/auth');
 const upload=require('../library/upload');
-const Address=require('../controllers/personal/address')
+const Address=require('../controllers/personal/address');
+const Order=require('../controllers/personal/order');
 
 /* GET users listing. */
-
 /*个人中心 书架*/
 router.get('/book',Auth,Collect.index);
 /*获取个人信息*/
@@ -26,5 +26,10 @@ router.get('/get_address',Address.get);
 router.post('/update',Address.update);
 /*删除地址*/
 router.post('/del',Address.del);
-
+/*设置默认地址*/
+router.get('/moren',Address.setter);
+/*获取订单*/
+router.get('/order',Order.index);
+/*获取购买订单*/
+router.get('/pay_order',Order.get);
 module.exports = router;

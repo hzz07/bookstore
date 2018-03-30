@@ -1,6 +1,16 @@
+/*user页面的显示跟隐藏*/
+
+$('.biaoti').click(function (e) {
+    let dianjishumu = $(this).index();
+    $('.pay').eq(dianjishumu - 1).fadeIn().siblings().fadeOut()
+    $('.biaoti').eq(dianjishumu - 1).addClass('pc_active').siblings().removeClass('pc_active');
+})
+
+/*页面加载时调用*/
 $(function () {
     getuser()
     getaddress()
+    getorder()
 })
 
 /*头像更换预览*/
@@ -118,28 +128,27 @@ function getaddress() {
     $.get('/personal/address', function (data) {
         if (data.status == 1) {
             var address = data.result.address;
-            console.log(address);
             var html = '';
             for (var i = 0; i < address.length; i++) {
                 html += '<tr>'
-                if(address[i].name){
+                if (address[i].name) {
                     html += '<td>' + address[i].name + '</td>'
                 }
-                else{
+                else {
                     html += '<td>无</td>'
                 }
-                if(address[i].address){
+                if (address[i].address) {
                     html += '<td>' + address[i].address + '</td>'
-                }else {
+                } else {
                     html += '<td>无</td>'
                 }
-                if(address[i].address){
+                if (address[i].address) {
                     html += '<td>' + address[i].address + '</td>'
-                }else {
+                } else {
                     html += '<td>无</td>'
                 }
                 html += '<td>110045</td>'
-                if(address[i].phone){
+                if (address[i].phone) {
                     html += '<td>' + address[i].phone + '</td>'
                 }
                 else {
@@ -147,7 +156,7 @@ function getaddress() {
                 }
 
                 html += '<td><a href="" onclick="editaddress(\'' + i + '\')" data-toggle="modal" data-target="#xinzengdizhi">修改</a>/<a href="javascript:;" onclick="delete_address(\'' + i + '\')">删除</a></td>'
-                if (i == 0) {
+                if (address[i].default == 1) {
                     html += '<td>\n' +
                         '            <button class="btn btn1"\n' +
                         '                >默认地址\n' +
@@ -155,8 +164,8 @@ function getaddress() {
                         '                </td>'
                 }
                 else {
-                    html +=' <td>\n' +
-                        '                            <button class="btn btn2"\n' +
+                    html += ' <td>\n' +
+                        '                            <button class="btn btn2" onclick="Moren(\'' + i + '\')" \n' +
                         '                            >设为默认\n' +
                         '                            </button>\n' +
                         '                        </td>'
@@ -172,6 +181,7 @@ function getaddress() {
         }
     })
 }
+
 $("#xinzeng").click(function () {
     $('#id').val();
     $('#address_dizhi').val('');
@@ -201,7 +211,6 @@ function addDress() {
         })
     }
     else {
-
         $.post('/personal/add_address', {
             name: name,
             phone: phone,
@@ -218,39 +227,97 @@ function addDress() {
 
 }
 
-/*获取分类*/
+/*获取地址详情*/
 
 function editaddress(e) {
     $('#id').val(e);
     let id = e;
     $.get('/personal/get_address',
-        {id:id},function (data) {
-        console.log(data.result);
-        if (data.status == 1) {
-            $('#address_name').val(data.result.name);
-            $('#address_phone').val(data.result.phone);
-            $('#address_dizhi').val(data.result.address);
-        } else {
-            console.log(data.msg);
-        }
-    })
+        {id: id}, function (data) {
+            if (data.status == 1) {
+                $('#address_name').val(data.result.name);
+                $('#address_phone').val(data.result.phone);
+                $('#address_dizhi').val(data.result.address);
+            } else {
+                console.log(data.msg);
+            }
+        })
 }
-/*删除*/
+
+/*删除地址*/
 function delete_address(a) {
-    let index=a;
+    let index = a;
     layer.confirm('是否删除？', {
-            btn: ['是', '否']
-        },function () {
-        $.post('/personal/del',{
-            index:index
-        },function (data) {
-            if(data.status==1){
+        btn: ['是', '否']
+    }, function () {
+        $.post('/personal/del', {
+            index: index
+        }, function (data) {
+            if (data.status == 1) {
                 layer.msg(data.msg);
                 getaddress();
-            }else {
+            } else {
                 layer.msg(data.msg);
             }
         })
     })
 
+}
+
+/*设置默认地址*/
+function Moren(r) {
+    let index = r;
+    $.get('/personal/moren', {
+        index: index
+    }, function (data) {
+        if (data.status == 1) {
+            layer.msg(data.msg);
+            getaddress();
+        } else {
+            layer.msg(data.msg);
+        }
+    })
+}
+
+/*获取订单信息*/
+function getorder() {
+    $.get('/personal/order', function (data) {
+        if (data.status == 1) {
+            let orderlist = data.result;
+            let html = ''
+            for (var i = 0; i < orderlist.length; i++) {
+                if (orderlist[i].status == 1) {
+                    html += '<tr>'
+                    html += '<td>' + orderlist[i].order_num + '</td>'
+                    html += '<td>' +orderlist[i].book[0].name+'</td>'
+                    html += '  <td>' + orderlist[i].total_price + '</td>'
+                    html += '<td>' + orderlist[i].create_at + '</td>'
+
+                    html += '<td>未付款</td>'
+                    html += '<td>未完成</td>'
+                    html += '<td><button class="btn-danger btn" onclick="pay(\''+ orderlist[i].order_num +'\')">付款</button>\n' +
+                        '                <p class="text-muted">取消订单</p>\n' +
+                        '                <p class="text-danger">查看</p>\n' +
+                        '                </td>\n' +
+                        '                </tr>'
+                }
+            }
+            $('#order').html(html);
+
+
+        } else {
+
+        }
+    })
+}
+
+function pay(a) {
+    $('#myneedorder').show();
+    $('#myorder').hide();
+    let order_num=a;
+    $.post('/personal/pay_order',{
+        order_num:order_num
+    },function (data) {
+
+    })
 }

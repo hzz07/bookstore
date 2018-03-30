@@ -1,8 +1,9 @@
+<script src="/javascripts/jquery.min.js"></script>
 <div class="my_neirong">
     <div class="container">
         <ol class="breadcrumb">
             <li><a href="">当前所在的位置：</a></li>
-            <li><a href="">首页</a></li>
+            <li><a href="/">首页</a></li>
             <li class="active">
                 我的购物车
             </li>
@@ -13,10 +14,11 @@
         <span>我的购物车</span>
     </div>
     <!--购物车-->
+    <form action="/shop_car/order" method="post" id="cleanForm">
     <div class="container gouwuche">
         <div class="pm_gouwuche">
             <div class="pm_gouwuche1">
-                <span><input type="checkbox" class="pm_gouwuche_quanxuan"></span>&nbsp;&nbsp;&nbsp;&nbsp;全选
+                <span><input type="checkbox" class="pm_gouwuche_quanxuan" onclick="swapCheck()"></span>&nbsp;&nbsp;&nbsp;&nbsp;全选
 
                 <span class="pm_gouwuche_goumai">购买信息</span>
             </div>
@@ -28,70 +30,156 @@
                 <li>操作</li>
             </ul>
         </div>
+
+        <% for(let i=0;i<list.length;i++) {%>
+
         <div class="pm_gouwuche_center">
             <div class="pm_gouwuche_center1">
-                <div class="pm_gouwuche_center_quanxuan"><input type="checkbox" ></div>
-
-                <img src='./images/index.png' alt="">
+                <div class="pm_gouwuche_center_quanxuan">
+                    <input type="checkbox" name="shop_car" value="<%=list[i]._id%>">
+                </div>
+                <img src='./images/index.png' alt="" style="width: 300px;height: 110px">
                 <div class="pm_gouwuche_center2">
-                    <span>小道理 分寸之间</span><br>
+                    <span><%= (list[i].book_id.name).substr(0,5)%></span><br>
                     <span>购买信息</span>
                 </div>
-
             </div>
-
-            <ul class="pm_gouwuche_center3">
-                <li>￥0.00</li>
-                <li class="pm_gouwuche_center3_dianji"><a href="">-</a>
-                    <input type="text" value="1"><a href="">+</a></li>
-                <li>￥0.00</li>
-                <li><a href="">删除</a></li>
+            <ul class="pm_gouwuche_center3" name="<%=list[i]._id%>">
+                <li>￥<%= (list[i].book_id.price)/100%></li>
+                <li class="pm_gouwuche_center3_dianji">
+                    <a href="javascript:;" class="min" name="<%=list[i]._id%>">-</a>
+                    <input type="text" value="<%= list[i].num%>" class="join-num">
+                    <a href="javascript:;" class="add" name="<%=list[i]._id%>">+</a></li>
+                <li>￥<%= ((list[i].book_id.price)*(list[i].num))/100%></li>
+                <li><a href="#" class="delete" name="<%= list[i]._id%>">删除</a></li>
             </ul>
         </div>
-        <div class="pm_gouwuche_center">
-            <div class="pm_gouwuche_center1">
-                <div class="pm_gouwuche_center_quanxuan"><input type="checkbox" ></div>
 
-                <img src='./images/index.png' alt="">
-                <div class="pm_gouwuche_center2">
-                    <span>小道理 分寸之间</span><br>
-                    <span>购买信息</span>
-                </div>
-
-            </div>
-
-            <ul class="pm_gouwuche_center3">
-                <li>￥0.00</li>
-                <li class="pm_gouwuche_center3_dianji"><a href="">-</a>
-                    <input type="text" value="1"><a href="">+</a></li>
-                <li>￥0.00</li>
-                <li><a href="">删除</a></li>
-            </ul>
-        </div>
+        <%}%>
 
         <div class="pm_gouwuche_footer">
             <div class="pm_gouwuche_footer1">
                 <div class="pm_gouwuche_footer_quanxuan">
-                    <input type="checkbox">
-                    <span>全选</span>
-                    <span><a href="">删除选中图书</a></span>
+                    <span><a href="#" id="delete_check">删除选中图书</a></span>
                 </div>
             </div>
+
             <div class="pm_gouwuche_footer2">
-                <span class="pm_jiesuan_footer-footer1">共 <span>3</span> 本，共计：</span>
-                <span class="pm_jiesuan_footer-footer2">￥3.00</span>
+                <!--总书数-->
+                <% var total_book=0;
+                for (let i=0;i<list.length;i++){
+                    total_book+=list[i].num
+                }
+                %>
+                <span class="pm_jiesuan_footer-footer1">共 <span>
+                       <%- total_book%>
+                       </span> 本，共计：</span>
+                <!--总价数-->
+                <% var total_price=0;
+                for (let i=0;i<list.length;i++){
+                    total_price+=(list[i].num*list[i].book_id.price)
+                }
+                %>
+                <span class="pm_jiesuan_footer-footer2">￥<%- total_price/100%></span>
             </div>
 
         </div>
 
-
     </div>
-    <div class="container">
+    <div class="container foot">
         <div class="tiaozhuan">
-            <a href="">再逛逛</a>
+            <a href="/">再逛逛</a>
         </div>
         <div class="tijiao">
-            <button type="button" class="btn btn-danger">确认支付</button>
+           <button class="btn btn-danger" onclick="dingdan()">确认订单信息</button>
         </div>
     </div>
+    </form>
 </div>
+<script>
+
+    function update(e,a) {
+        let id=e;
+        let num1=a;
+        $.get('/shop_car/update',{
+            id:id,num:num1
+        },function (data) {
+            if(data.status==1){
+                window.location.href='/shop_car';
+            }else {
+
+            }
+        })
+    }
+    $(function() {
+        $(".add").click(function () {
+            var num=$(this).parent().children(".join-num").val();
+            console.log(num);
+            let num1=parseInt(num)+1;
+            let id=$(this).attr('name');
+            update(id,num1);
+        });
+        $(".min").click(function () {
+            var num=$(this).parent().children(".join-num").val();
+            let id=$(this).attr('name');
+            var num1=parseInt(num)-1; //点击减号输入框数值减1
+            if(num<=0){
+                num1=parseInt(num)+1;; //最小值为1
+            }
+            update(id,num1);
+        });
+    });
+
+
+/*Ajax*/
+    $('#delete_check').click(function () {
+        /*循环获取 被选中的checkbox的name值*/
+        for(let i=0;i<$('input:checkbox:checked').length;i++){
+            $.ajax({
+                type: 'post',
+                url: '/shop_car/delete',
+                data: {
+                    "data":$('input:checkbox:checked')[i].name,
+                    "num": i
+                },
+                dataType: 'json',
+                success: function() {
+                }
+            });
+            window.location.reload();
+        }
+    })
+    /*单个删除*/
+    $('.delete').click(function () {
+        $.ajax({
+            type: 'post',
+            url: '/shop_car/delete',
+            data: {
+                "data":$(this).attr("name"),
+            },
+            dataType: 'json',
+            success: function() {
+            }
+        });
+        window.location.reload();
+    })
+    /*全选 反选*/
+    let isCheckAll = false;
+    function swapCheck() {
+        if (isCheckAll) {
+            $("input[type='checkbox']").each(function() {
+                this.checked = false;
+            });
+            isCheckAll = false;
+        } else {
+            $("input[type='checkbox']").each(function() {
+                this.checked = true;
+            });
+            isCheckAll = true;
+        }
+    }
+    function dingdan() {
+        $('#cleanForm').submit();
+    }
+    /*确认订单*/
+</script>

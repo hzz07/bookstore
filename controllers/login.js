@@ -32,9 +32,10 @@ const Login = {
         })
     },
     logout: (req, res, next) => {
-
-
+            req.session.loginUser = "";
+            res.redirect('/');
     }
+
 }
 
 

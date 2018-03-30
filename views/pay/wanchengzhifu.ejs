@@ -1,18 +1,18 @@
-<div id="pm_zhifu_div">
+<div class="my_neirong"  id="pm_zhifu_div">
     <div id="pm_zhifu_left">
-        <img src="./images/duihao.png" alt="">
+        <img src="/images/duihao.png" alt="">
     </div>
     <div id="pm_zhifu_right">
         <div id="pm_zhifu_span1">
             <span>恭喜您，支付成功啦！</span>
         </div>
         <div id="pm_zhifu_span2">
-            <p>您已成功支付 <span class="pm_zhifu_jiage">￥789.00元</span> ，订单编号：<span >1278909876</span> </p>
+            <p>您已成功支付 <span class="pm_zhifu_jiage"><%=order.total_price%></span> ，订单编号：<span ><%=order.order_num%> </p>
         </div>
         <div id="pm_zhifu_span3">
             <span>您还可以</span>
-            <button class="btn btn-default btn-danger" type="submit">继续购物</button>
-            <a href="#">查看我的订单</a>
+            <a href="/"><button class="btn btn-default btn-danger" type="submit">继续购物</button></a>
+            <a href="/personal/book">查看我的订单</a>
         </div>
 
     </div>

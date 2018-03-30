@@ -1,3 +1,14 @@
+$(function () {
+    getCount();
+
+})
+function getCount() {
+    $.get('/shop_car/show', function (data) {
+        $("#shopping_car_total_num").html(data.total_num);
+    })
+}
+$('.pay').eq(0).show().siblings().hide();
+
 /*导航栏根据下拉滑块进行样式修改*/
 $(window).scroll(function () {
     if ($(".navbar").offset().top > 50) {
@@ -7,14 +18,6 @@ $(window).scroll(function () {
     }
 })
 
-/*user页面的显示跟隐藏*/
-$('.pay').eq(0).show().siblings().hide();
-$('.biaoti').click(function (e) {
-
-    let dianjishumu=$(this).index();
-    $('.pay').eq(dianjishumu-1).show(700).siblings().hide(500);
-    $('.biaoti').eq(dianjishumu-1).addClass('pc_active').siblings().removeClass('pc_active');
-})
 
 /*pay_needzhifu 默认隐藏*/
 $('.pay #myneedorder').hide();

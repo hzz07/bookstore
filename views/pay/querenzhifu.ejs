@@ -1,4 +1,4 @@
-<div class="zhifu ">
+<div class="zhifu my_neirong">
     <div class="container">
         <ol class="breadcrumb">
             <li><a href="">当前所在的位置：</a></li>
@@ -8,17 +8,18 @@
     </div>
     <!--收获地址详情-->
     <div class="container ">
+
         <ul class="center">
-            <li>订单号<span>：23123123123</span> 付款状态：<span class="center_fukuan">待付款</span></li>
-            <li>收货地址：<span>河南省郑州市-1205-10号</span></li>
-            <li>收件人: <span>韩</span></li>
-            <li>电话：<span>1233323232</span></li>
+            <li>订单号<span>：<%=order_num%></span> 付款状态：<span class="center_fukuan">待付款</span></li>
+            <li>收货地址：<span><%=address.address%></span></li>
+            <li>收件人: <span><%=address.name%></span></li>
+            <li>电话：<span><%=address.phone%></span></li>
         </ul>
     </div>
     <!--购买信息-->
     <div class="container footer">
-        <div class="pm_queren_footer">
-            <div class="pm_queren_footer1">
+        <div class="pm_jiesuan_footer">
+            <div class=" pm_queren_footer1">
                 <span>购买信息</span>
             </div>
 
@@ -28,36 +29,42 @@
                 <li>小计</li>
             </ul>
         </div>
-        <div class="pm_queren_footer_center">
-            <div class="pm_queren_footer1">
-                <img src='./images/index.png' alt="">
-                <div class="pm_queren_footer-center1">
-                    <span>小道理 分寸之间</span><br>
-                    <span>购买信息</span>
-                </div>
+        <%for(var i=0;i<list.length;i++){%>
+        <div class="pm_gouwuche_center">
+                    <div class="pm_queren_footer1">
+                        <input type="hidden" value="<%=list[i]._id%>" name="id">
+                        <img src='/images/index.png' alt="">
+                        <div class="pm_queren_footer-center1">
+                            <span><%=list[i].name%></span><br>
+                            <span><%=list[i].author%></span>
+                        </div>
 
-            </div>
+                    </div>
 
-            <ul class="pm_queren_footer-center2">
-                <li>￥0.00</li>
-                <li>1</li>
-                <li>0.00</li>
-            </ul>
+                    <ul class="pm_queren_footer-center2">
+                        <li><%=list[i].price%></li>
+                        <li><%=list[i].num%></li>
+                        <li><%=((list[i].price)*100*(list[i].num))/100%></li>
+                    </ul>
         </div>
+        <%}%>
         <div>
             <div class="pm_queren_footer-footer">
-                <span class="pm_queren_footer-footer1">共 <span>3</span> 本，共计：</span>
-                <span class="pm_queren_footer-footer2">￥3.00</span>
+                <span class="pm_queren_footer-footer1">共 <span><%=total_num%></span> 本，共计：</span>
+                <span class="pm_queren_footer-footer2"><%=total_price%></span>
             </div>
 
         </div>
 
-
     </div>
-    <div class="container">
+    <form action="/clean/pay" method="post" >
+        <input type="hidden" name="order_num" value="<%=order_num%>">
+    <div class="container foot">
         <div class="tijiao">
-            <button type="button" class="btn btn-danger">确认支付</button>
+            <button type="submit" class="btn btn-danger">确认支付</button>
         </div>
     </div>
+    </form>
+
 
 </div>

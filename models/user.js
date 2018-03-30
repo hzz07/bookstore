@@ -36,7 +36,11 @@ const UserSchema = new Schema({
         {
             name:String,
             phone:String,
-            address:String
+            address:String,
+            default: {
+                type:Number,
+                default:0
+            }
         }
     ],
     create_at:{

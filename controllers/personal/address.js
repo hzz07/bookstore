@@ -7,6 +7,7 @@ const Address = {
     index: (req, res, next) => {
         let user = req.session.loginUser;
         UserModel.findOne({_id: user._id}).then(doc => {
+            console.log(doc);
             res.json({
                 'status': 1,
                  result: doc,
@@ -82,7 +83,7 @@ const Address = {
             let newaddresslist = doc.address;
             newaddresslist[index] = addresslist;
             console.log(newaddresslist);
-            UserModel.update({_id: user._id}, {address:newaddresslist}).then(doc => {
+                UserModel.update({_id: user._id}, {address:newaddresslist}).then(doc => {
                 res.json({
                     'status': 1,
                     result: doc,
@@ -150,6 +151,33 @@ const Address = {
                     'msg': '删除失败！'
                 })
             })
+        })
+    },
+    setter:(req,res,next)=>{
+        let user =req.session.loginUser;
+        let index=req.query.index;
+        console.log(index);
+        UserModel.findOne({_id:user._id}).then(doc=>{
+            let listDress=doc.address;
+            for(var i=0;i<listDress.length;i++){
+                if(i==index){
+                    listDress[index].default= listDress[index].default=1;
+                }else {
+                    listDress[i].default= 0;
+                }
+            }
+            UserModel.update({_id: user._id},{address:listDress}).then(doc => {
+                res.json({
+                    'status': 1,
+                    'msg': '设置默认地址成功！'
+                })
+            }).catch(err => {
+                res.json({
+                    'status': 0,
+                    'msg': '设置默认地址失败！'
+                })
+            })
+
         })
     }
 }

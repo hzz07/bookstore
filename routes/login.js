@@ -6,4 +6,6 @@ const Login =require('../controllers/login');
 router.get('/',Login.index);
 
 router.post('/',Login.login);
+
+router.get('/logout',Login.logout);
 module.exports = router;

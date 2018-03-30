@@ -40,14 +40,14 @@
             </div>
             <div class="row tuijian-xiangqing">
                 <% for(var i = 0;i < 4;i++){ %>
-                    <div class="col-sm-6 col-md-6">
+                <div class="col-sm-6 col-md-6">
                     <div class="thumbnail">
                         <img src="/images/65465465.jpg">
                         <div class="caption xiangqing-title">
                             <h4><%= tui_book[i].name %></h4>
                             <span><%= tui_book[i].author_id.name %></span>
                             <p class="xiangqing-title-content"><%= tui_book[i].content %></p>
-                            <p><a href="/bookdetails/<%=tui_book[i]._id%>" class="btn btn-danger goumai">购买</a></p>
+                            <p><a href="/bookdetails/<%= tui_book[i]._id %>" class="btn btn-danger goumai">购买</a></p>
                         </div>
                     </div>
                 </div>
@@ -67,18 +67,19 @@
                             </span>
                         </div>
                         <div class="row">
-                            <% for(var i=0;i<12;i++){%>
+                            <% for(var i = 0;i < 12;i++){ %>
                             <div class="col-sm-4 col-md-3">
                                 <div class="thumbnail">
                                     <img src="/images/65465465.jpg">
                                     <div class="caption">
-                                        <h3><%=locals.xinshu[i].name %></h3>
-                                        <p>￥<%=(locals.xinshu[i].price)/100%></p>
-                                        <p><a href="/bookdetails/<%=locals.xinshu[i]._id%>" class="btn btn-danger goumai">点击查看</a></p>
+                                        <h3><%= locals.xinshu[i].name %></h3>
+                                        <p>￥<%= (locals.xinshu[i].price)/100 %></p>
+                                        <p><a href="/bookdetails/<%= locals.xinshu[i]._id %>"
+                                              class="btn btn-danger goumai">点击查看</a></p>
                                     </div>
                                 </div>
                             </div>
-                            <%}%>
+                            <% } %>
                         </div>
                     </div>
                 </div>
@@ -93,6 +94,10 @@
 
 
 </div>
+
+<%- include('gouwu_car') %>
+
+
 <!--底部-->
 <%- include('footer') %>
 </body>

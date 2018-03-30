@@ -15,6 +15,7 @@ const personl = require('./routes/personal');
 const login =require('./routes/login');
 const register =require('./routes/register');
 const shop_car=require('./routes/dingdan');
+const clean=require('./routes/clean');
 const locals=require('./middleware/locals');
 const flash=require('connect-flash');
 
@@ -47,7 +48,7 @@ app.use('/personal', personl);
 app.use('/login', login);
 app.use('/register',register);
 app.use('/shop_car',shop_car)
-
+app.use('/clean',clean)
 
 
 // catch 404 and forward to error handler
